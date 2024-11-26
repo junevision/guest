@@ -3,14 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <title>Django Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            max-width: 300px;
+            margin: 50px auto;
+            padding: 30px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 12px 10px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #5cb85c;
+            border: none;
+            color: white;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #4cae4c;
+        }
+    </style>
 </head>
 <body>
     <h1>发布会管理</h1>
     <form method="post">
+        {% csrf_token %}
         <input name="username" type="text" placeholder="username"><br>
         <input name="password" type="password" placeholder="password"><br>
         <button id="login_btn" type="submit">登录</button>
-        {% csrf_token %}
     </form>
 </body>
 </html>
