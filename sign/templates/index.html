@@ -44,12 +44,13 @@
     </style>
 </head>
 <body>
-    <h1>发布会管理</h1>
-    <form method="post">
+    <h1>Release Meeting Management</h1>
+    <form method="post" action="/login_action/">
         {% csrf_token %}
         <input name="username" type="text" placeholder="username"><br>
         <input name="password" type="password" placeholder="password"><br>
-        <button id="login_btn" type="submit">登录</button>
+        {{ error }}<br>
+        <button id="login_btn" type="submit">Login</button>
     </form>
 </body>
 </html>
