@@ -6,13 +6,16 @@ def index(request):
     return render(request, "index.html")
 
 def event_manage(request):
-    return render(request, "event_manage.html")
+    username = request.COOKIES.get('user', '')  # get cookie
+    return render(request, "event_manage.html", {"user": username})
 
 def login_action(request):
     if request.method == 'POST':
         username = request.POST.get('username', '')
         password = request.POST.get('password', '')
         if username == 'admin' and password == 'admin123':
-            return HttpResponseRedirect('/event_manage/')
+            response = HttpResponseRedirect('/event_manage/')
+            response.set_cookie('user', username, 3600)  # add browser cookie
+            return response
         else:
             return render(request, 'index.html', {'error': 'username or password error!'})
